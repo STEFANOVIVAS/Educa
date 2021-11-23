@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from . fields import OrderField
+from django.template.loader import render_to_string
 
 # Create your models here.
 
@@ -59,7 +60,7 @@ class Content(models.Model):
                                     'model__in': ('text', 'video', 'image', 'file')})
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey('contentType', 'object_id')
-    order = OrderField(blank=True, for_fields=['moduel'])
+    order = OrderField(blank=True, for_fields=['module'])
 
     class Meta:
         ordering = ['order']
@@ -71,6 +72,10 @@ class ItemBase(models.Model):
     title = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def render(self):
+        return render_to_string(f'courses/content/{self._meta.model_name}.html',
+        {'item':self})
 
     class Meta:
         abstract = True
