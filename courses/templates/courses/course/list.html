@@ -36,12 +36,12 @@
     {% for course in courses %}
       {% with subject=course.subject %}
         <h3>
-          <a href="{% url 'course_detail' course.pk %}">
-            {{ course.title }}
-          </a>
+          
+            {{ subject }}
+          
         </h3>
         <p>
-          <a href="{% url "course_list_subject" subject.slug %}">{{ subject }}</a>.
+          <a href="{% url 'course_detail' course.pk %}">{{ course }}</a>.
             {{ course.total_modules }} modules.
             Instructor: {{ course.owner.get_full_name }}
         </p>
