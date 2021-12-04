@@ -1,5 +1,5 @@
 from students.forms import CourseEnrollForm
-from django.shortcuts import redirect,get_object_or_404
+from django.shortcuts import redirect,get_object_or_404,render
 from django.urls import reverse_lazy
 from django.forms.models import modelform_factory
 from django.apps import apps
@@ -167,3 +167,8 @@ class CourseDetailView(DetailView):
         context['enroll_form']=CourseEnrollForm(initial={'course':self.object})
         # context['enroll_courses']=self.request.user.courses_joined.all()
         return context
+
+def subjects_and_courses(request):
+    subjects=Subject.objects.all()
+    courses=Course.objects.all()
+    return render (request, 'courses/course/main.html', {'subjects':subjects, 'courses':courses})

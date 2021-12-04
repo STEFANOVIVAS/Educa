@@ -13,6 +13,104 @@ body {
     
 }
 
+
+/* Subjects box */
+
+h3.main-title {
+    text-align: center;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    
+}
+
+.subject-box {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.subject-box i, .subject-box a {
+    transition: .5s;
+}
+
+
+.subject-box a {
+    text-decoration: none;
+    color: #444;
+    display:block;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.subject-box i {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color:#444
+}
+
+
+
+
+
+/* .subject-box:hover > i, .subject-box:hover > h4, .subject-box h4:hover > a {
+    color:greenyellow;
+} */
+
+.subject-box:hover > i, .subject-box:hover > a{
+    color:greenyellow
+}
+
+.button-carousel-dois {
+    background-color: #2c89ae;
+    color: white;
+    width: 200px;
+    height: 60px;
+    padding: 5px 20px;
+    border-radius: 30px;
+    border: 3px solid white;
+    text-decoration: none;
+}
+
+
+
+.carousel-inner img {
+    max-height: 450px;
+    margin: 0 auto;
+    object-fit: cover;
+    
+    
+}
+
+.link {
+    text-decoration: none;
+}
+
+.carousel-imagem-1 {
+    object-position: 0 10%;
+}
+
+.carousel-imagem-2 {
+    object-position: 0 20%;
+
+}
+
+.carousel-caption-dois {
+    top: 1%;
+    bottom: auto;
+    left:5%;
+    max-width: 350px;
+    padding: 15px;
+    
+    
+}
+
+
+.carousel-legenda-2 {
+    left:10%;
+    top:60%;
+    position: relative;
+}
+
+
 .profile-dropdown {
     margin-right: 2rem;
 }
