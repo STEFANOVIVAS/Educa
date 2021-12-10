@@ -7,9 +7,26 @@ body {
     color:#333;
 }
 
+.logo {
+    width: 35px;
+    
+    
+}
+
+a.logo-link {
+    color:black;
+    font-weight: 500;
+    text-decoration: none!important;
+    
+    
+}
+
+.navbar-brand {
+    font-size: 1.0rem;;
+}
 .navbar-nav a {
     color:black;
-    padding-right: 4rem!important;
+    padding-right: 2.5rem!important;
     
 }
 
@@ -22,6 +39,7 @@ h3.main-title {
     margin-bottom: 45px;
     
 }
+
 
 .subject-box {
     text-align: center;
@@ -47,13 +65,43 @@ h3.main-title {
     color:#444
 }
 
+.card-photo {
+    width: 240px;
+    height: 180px;
+}
 
+.card-grid {
+    width: 250px;
+    height: 320px;
+    
+}
 
+.card-font {
+    font-size: 15px;
+    font-weight: 200;
+    font-weight: bold;
+}
 
+.card-creator {
+    font-size: 12px;
+}
 
-/* .subject-box:hover > i, .subject-box:hover > h4, .subject-box h4:hover > a {
-    color:greenyellow;
-} */
+.card-button {
+    position: relative;
+    bottom: 5%;
+    left:0;
+}
+
+.card-footer {
+    background: transparent;
+    border-top: 0px;
+    
+    
+}
+
+.card-footer a {
+    border-color:black;
+}
 
 .subject-box:hover > i, .subject-box:hover > a{
     color:greenyellow
@@ -114,11 +162,45 @@ h3.main-title {
 .profile-dropdown {
     margin-right: 2rem;
 }
+.profile-login {
+    color:black!important;
+}
 
 .categories {
     padding-left: 20px!important;
+    color:black!important;
+    justify-content: center!important;
     
 }
+
+.teach-link{
+    color:black!important;
+}
+
+
+/* Footer */
+
+footer {
+    background-color: rgb(45, 161, 45);
+    height: 100px;
+    padding: 16px 32px;
+}
+
+.footer-links li {
+    list-style: none;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color:white;
+    
+}
+
+.footer-logo{
+    color:white;
+}
+
+
 ul {
     float:left;
 }

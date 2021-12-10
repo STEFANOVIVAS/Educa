@@ -1,5 +1,5 @@
 from django import template
-from ..models import Subject
+from ..models import Subject,Course
 
 
 register=template.Library()
@@ -19,3 +19,10 @@ def is_enrolled(user,course):
 def total_subjects():
     return Subject.objects.all()
                
+@register.simple_tag
+def total_courses(subject=None):
+    courses=Course.objects.all()
+    if subject:
+        courses=Course.objects.filter(subject__title=subject)
+    return courses
+    

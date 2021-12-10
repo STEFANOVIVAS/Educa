@@ -168,7 +168,3 @@ class CourseDetailView(DetailView):
         # context['enroll_courses']=self.request.user.courses_joined.all()
         return context
 
-def subjects_and_courses(request):
-    subjects=Subject.objects.all()
-    courses=Course.objects.all()
-    return render (request, 'courses/course/main.html', {'subjects':subjects, 'courses':courses})

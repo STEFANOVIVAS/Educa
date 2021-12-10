@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+{% load course %}
+
+
+
 
 {% block content %}
   <div class="container" id="container-carousel">
@@ -37,10 +41,37 @@
       </button>
     </div>
   </div>
+  <!--Courses-->
+  <section id="courses">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 ">
+          <h3 class="main-title">Expand your carrer job oportunities with this courses</h3>
+        </div>
+        
+        {% total_courses as courses %}
+        {% for course in courses %}
+        <div class="card col-md-4 m-3 card-grid p-0">
+          <img src="{% static 'courses/javascript.png' %}" class="card-img-top m-1 card-photo" alt="...">
+          <div class="card-body p-2">
+            <h5 class="card-title card-font">{{ course.title|truncatewords:9}}</h5>
+            <p class="card-text card-creator">Created by {{course.owner}}</p>
+           
+          </div>
+          <div class="card-footer text-muted mx-auto align-self-end">
+            <a href="{% url 'course_detail' course.pk %}" class="btn btn-primary bg-success align-self-end">Access the course!</a>
+          </div>
+        </div>
+        {% endfor %} 
+      </div>
+    </div>
+  </section>
+
+  
   <!--Subjects-->
   <div id="courses-subjects">
     <div class="container">
-      <div class="row">
+      <div class="row mb-5">
         <div class="col-12">
           <h3 class="main-title"> Main categories</h3>
         </div>
@@ -80,5 +111,18 @@
       </div>
     </div>
   </div>
-
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 desenvolvido">
+          <ul class="col-4 footer-links">
+            <li><a href="{% url 'manage_course_list' %}">Teach on Educa</a></li>
+            <li><a class="navbar-brand logo-link" href="{% url 'course_list' %}">
+              <img src="{% static 'courses/school.svg' %}" alt="Educa logo" class="d-inline-block align-text-center"> Educa
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </footer>
 {% endblock %}
