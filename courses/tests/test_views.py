@@ -1,4 +1,3 @@
-
 from django.test import TestCase
 from django.urls import reverse
 from courses.models import Course, Subject, Module
@@ -61,9 +60,7 @@ class ManageCourseListViewTest(TestCase):
     def test_logged_in_but_without_permission_manage_course(self):
 
         self.client.login(username='johnsilver', password='71RS56237')
-
         response = self.client.get(reverse('manage_course_list'))
-
         # Check that we got a response "Forbidden"
         self.assertEqual(response.status_code, 403)
 
