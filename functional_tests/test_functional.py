@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from courses.models import Subject, Course
+from accounts.models import Profile
 
 
 class TestListCourses(StaticLiveServerTestCase):
@@ -50,6 +51,7 @@ class TestEnrollCourses(StaticLiveServerTestCase):
         self.browser = webdriver.Chrome()
         user1 = User.objects.create_user(
             'johnsilver', '756237')
+
         user2 = User.objects.create_user('stefanovivas', '6dejhb3')
 
         user1.save()
@@ -61,7 +63,7 @@ class TestEnrollCourses(StaticLiveServerTestCase):
         subject = Subject.objects.create(
             title='Software development', slug='software-development')
         Course.objects.create(
-            owner=user2, subject=subject, title='Data structures', slug='data-structures', overview='')
+            owner=user1, subject=subject, title='Data structures', slug='data-structures', overview='')
 
     def tearDown(self):
         self.browser.quit()

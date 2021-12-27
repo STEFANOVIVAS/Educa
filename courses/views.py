@@ -18,7 +18,7 @@ from django.core.cache import cache
 class OwnerMixin(object):
     def get_queryset(self):
         qs = super().get_queryset()
-        return qs.filter(owner=self.request.user)
+        return qs.filter(owner=self.request.user.profile)
 
 
 class OwnerEditMixin(object):
@@ -29,7 +29,7 @@ class OwnerEditMixin(object):
 
 class OwnerCourseMixin(OwnerMixin, LoginRequiredMixin, PermissionRequiredMixin):
     model = Course
-    fields = ['subject', 'title', 'slug', 'overview']
+    fields = ['subject', 'title', 'slug', 'overview', 'cover_photo']
     success_url = reverse_lazy('manage_course_list')
 
 
@@ -52,7 +52,6 @@ class CourseUpdateView(OwnerCourseEditMixin, UpdateView):
 
 class CourseDeleteView(OwnerCourseMixin, DeleteView):
     template_name = 'courses/manage/course/delete.html'
-    permission_required = 'courses.delete_course'
 
 
 class CourseModuleUpdateView(TemplateResponseMixin, View):
@@ -63,7 +62,8 @@ class CourseModuleUpdateView(TemplateResponseMixin, View):
         return ModuleFormSet(instance=self.course, data=data)
 
     def dispatch(self, request, pk):
-        self.course = get_object_or_404(Course, id=pk, owner=request.user)
+        self.course = get_object_or_404(
+            Course, id=pk, owner=request.user.profile)
         return super().dispatch(request, pk)
 
     def get(self, request, *args, **kwargs):
@@ -96,10 +96,11 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
 
     def dispatch(self, request, module_id, model_name, id=None):
         self.module = get_object_or_404(
-            Module, id=module_id, course__owner=request.user)
+            Module, id=module_id, course__owner=request.user.profile)
         self.model = self.get_model(model_name)
         if id:
-            self.obj = get_object_or_404(self.model, id=id, owner=request.user)
+            self.obj = get_object_or_404(
+                self.model, id=id, owner=request.user.profile)
         return super().dispatch(request, module_id, model_name, id)
 
     def get(self, request, module_id, model_name, id=None):
@@ -111,7 +112,7 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
                              data=request.POST, files=request.FILES)
         if form.is_valid():
             obj = form.save(commit=False)
-            obj.owner = request.user
+            obj.owner = request.user.profile
             obj.save()
             if not id:
                 Content.objects.create(module=self.module, item=obj)
@@ -122,7 +123,7 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
 class ContentDeleteView(View):
     def post(self, request, id):
         content = get_object_or_404(
-            Content, id=id, module__course__owner=request.user)
+            Content, id=id, module__course__owner=request.user.profile)
         module = content.module
         content.item.delete()
         content.delete()
@@ -134,7 +135,7 @@ class ModuleContentListView(TemplateResponseMixin, View):
 
     def get(self, request, module_id):
         module = get_object_or_404(
-            Module, id=module_id, course__owner=request.user)
+            Module, id=module_id, course__owner=request.user.profile)
         return self.render_to_response({'module': module})
 
 

@@ -10,9 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path,os
+from pathlib import Path, os
 
 from django.urls.base import reverse_lazy
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +34,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    'accounts.apps.AccountsConfig',
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
     'django.contrib.admin',
@@ -131,16 +134,18 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL=reverse_lazy('student_course_list')
-LOGIN_URL='login'
-LOGOUT_URL='logout'
+LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 
-MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-CACHES={
-    'default':{
-    'BACKEND':'django.core.cache.backends.memcached.MemcachedCache',
-    'LOCATION':'127.0.0.1:11211',
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
     }
 }
+
+# AUTH_USER_MODEL: "accounts.User"
