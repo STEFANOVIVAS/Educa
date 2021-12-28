@@ -49,6 +49,7 @@ class TestListCourses(StaticLiveServerTestCase):
 class TestEnrollCourses(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
+        
         user1 = User.objects.create_user(
             'johnsilver', '756237')
 
@@ -56,14 +57,14 @@ class TestEnrollCourses(StaticLiveServerTestCase):
 
         user1.save()
         user2.save()
-
+        
         authenticate(
             username='johnsilver', password='756237')
         self.browser.get(self.live_server_url + '/')
         subject = Subject.objects.create(
             title='Software development', slug='software-development')
         Course.objects.create(
-            owner=user1, subject=subject, title='Data structures', slug='data-structures', overview='')
+            owner=user1.profile, subject=subject, title='Data structures', slug='data-structures', overview='')
 
     def tearDown(self):
         self.browser.quit()

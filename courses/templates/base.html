@@ -55,7 +55,8 @@
               {{ request.user }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{% url 'student_course_list' %}">My courses</a></li>
+              <li><a class="dropdown-item" href="{% url 'student_course_list' %}">My learning</a></li>
+              <li><a class="dropdown-item" href="{% url 'manage_course_list' %}">My courses</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
               <li>
                 <hr class="dropdown-divider">

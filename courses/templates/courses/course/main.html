@@ -54,7 +54,11 @@
       {% total_courses as courses %}
       {% for course in courses %}
       <div class="card col-md-4 m-3 card-grid p-0">
-        <img src="{% static 'courses/javascript.png' %}" class="card-img-top m-1 card-photo" alt="...">
+        {% if course.cover_photo %}
+        <img src="{{course.cover_photo.url}}" class="card-img-top m-1 card-photo" alt="...">
+        {% else %}
+        <img src="#" class="card-img-top m-1 card-photo" alt="...">
+        {% endif %}
         <div class="card-body p-2">
           <h5 class="card-title card-font">{{ course.title|truncatewords:9}}</h5>
           <p class="card-text card-creator">Created by {{course.owner}}</p>

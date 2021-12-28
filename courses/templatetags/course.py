@@ -15,7 +15,7 @@ def model_name(obj):
 
 @register.filter(name='is_enrolled')
 def is_enrolled(user, course):
-    return user.profile.courses_joined.filter(title=course).exists()
+    return user.courses_joined.filter(title=course).exists()
 
 
 @register.simple_tag
