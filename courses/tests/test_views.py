@@ -13,7 +13,7 @@ class CourseListViewTest(TestCase):
         subject = Subject.objects.create(
             title='Web developer', slug='web-developer')
         Course.objects.create(
-            owner=user, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
+            owner=user.profile, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
 
     def test_view_url_exists_at_desired_location_courseList(self):
         subject = Subject.objects.get(id=1)
@@ -68,14 +68,16 @@ class ManageCourseListViewTest(TestCase):
         user1 = User.objects.get(id=1)
 
         # creating view permission
-        view_permission = Permission.objects.get(id=4)
+        view_permission = Permission.objects.get(
+            name__icontains='view course')
 
         # Applying permission to user
         user1.user_permissions.add(view_permission)
 
         self.client.login(username='johnsilver', password='71RS56237')
         response = self.client.get(reverse('manage_course_list'))
-
+        
+        
         # Check our user is logged in
         self.assertEqual(str(response.context['user']), 'johnsilver')
         # Check that we got a response "success"
@@ -116,13 +118,15 @@ class CourseCreateViewTest(TestCase):
         user1 = User.objects.get(id=1)
 
         # creating view permission
-        view_permission = Permission.objects.get(id=1)
-
+        view_permission = Permission.objects.get(
+            name__icontains='add course')
+        
         # Applying permission to user
         user1.user_permissions.add(view_permission)
 
         self.client.login(username='johnsilver', password='71RS56237')
         response = self.client.get(reverse('course_create'))
+        
 
         # Check our user is logged in
         self.assertEqual(str(response.context['user']), 'johnsilver')
@@ -140,7 +144,7 @@ class CourseDeleteViewTest(TestCase):
         subject = Subject.objects.create(
             title='Web developer', slug='web-developer')
         Course.objects.create(
-            owner=user, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
+            owner=user.profile, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
 
     def test_view_url_exists_at_desired_location_course_delete(self):
         course = Course.objects.get(id=1)
@@ -178,7 +182,7 @@ class CourseDetailViewTest(TestCase):
         subject = Subject.objects.create(
             title='Web developer', slug='web-developer')
         Course.objects.create(
-            owner=user, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
+            owner=user.profile, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
 
     def test_view_url_accessible_by_name(self):
         course = Course.objects.get(id=1)
@@ -198,14 +202,14 @@ class ModuleContentListViewTest(TestCase):
         subject = Subject.objects.create(
             title='Web developer', slug='web-developer')
         course = Course.objects.create(
-            owner=test_user, subject=subject, title='HTTP protocol', slug='HTTP-protocol', overview='')
+            owner=test_user.profile, subject=subject, title='HTTP protocol', slug='HTTP-protocol', overview='')
         Module.objects.create(course=course, title='GET method')
 
     def test_content_list_view_url_accessible_by_name(self):
         login = self.client.login(username='johnsilver', password='756237')
-        print(login)
+        
         module = Module.objects.get(id=1)
-        print(module.id)
+        
         response = self.client.get(
             reverse('module_content_list', kwargs={'module_id': module.id}))
 
@@ -222,7 +226,7 @@ class ContentCreateUpdateViewTest(TestCase):
         subject = Subject.objects.create(
             title='Web developer', slug='web-developer')
         course = Course.objects.create(
-            owner=test_user, subject=subject, title='HTTP protocol', slug='HTTP-protocol', overview='')
+            owner=test_user.profile, subject=subject, title='HTTP protocol', slug='HTTP-protocol', overview='')
         Module.objects.create(course=course, title='GET method')
 
     def test_content_create_view_url_accessible_by_name(self):

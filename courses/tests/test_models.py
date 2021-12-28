@@ -25,7 +25,7 @@ class CourseModelTest(TestCase):
         subject = Subject.objects.create(
             title='Web developer', slug='web-developer')
         Course.objects.create(
-            owner=user, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
+            owner=user.profile, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
 
     def test_object_name_is_title(self):
         course = Course.objects.get(id=1)
@@ -42,7 +42,7 @@ class ModuleModelTest(TestCase):
         subject = Subject.objects.create(
             title='Web developer', slug='web-developer')
         course = Course.objects.create(
-            owner=user, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
+            owner=user.profile, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
         Module.objects.create(course=course, title='GET Method')
         Module.objects.create(course=course, title='POST Method')
         Module.objects.create(course=course, title='DELETE Method')
@@ -61,9 +61,9 @@ class OrderFieldModelTest(TestCase):
         subject = Subject.objects.create(
             title='Web developer', slug='web-developer')
         course_test_1 = Course.objects.create(
-            owner=user, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
+            owner=user.profile, subject=subject, title='HTTP method', slug='HTTP-method', overview='')
         course_test_2 = Course.objects.create(
-            owner=user, subject=subject, title='DOM Tree', slug='DOM-Tree', overview='')
+            owner=user.profile, subject=subject, title='DOM Tree', slug='DOM-Tree', overview='')
         Module.objects.create(course=course_test_1, title='GET Method')
         Module.objects.create(course=course_test_2,
                               title='Searching DOM elements')
