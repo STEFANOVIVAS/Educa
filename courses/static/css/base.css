@@ -34,10 +34,18 @@ a.logo-link {
 /* Subjects box */
 
 h3.main-title {
-    text-align: center;
-    margin-top: 45px;
+    text-align:center;
+    margin-top: 35px;
     margin-bottom: 45px;
+    padding:13px;
     
+}
+
+h3.sub-title {
+    text-align:center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding:13px;
 }
 
 
@@ -65,6 +73,18 @@ h3.main-title {
     color:#444
 }
 
+.educa-card i {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color:#444
+}
+
+.educa-card {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
 .card-photo {
     width: 250px;
     height: 180px;
@@ -73,6 +93,12 @@ h3.main-title {
 .card-grid {
     width: 260px;
     height: 320px;
+    
+}
+
+.card-grid-how-works {
+    width: 280px;
+    height: 250px;
     
 }
 
@@ -279,6 +305,7 @@ h1 {
     background:#333;
     color: #fff;
     font-family:'Roboto', sans-serif;
+    height:30%;
 }
 
 .contents ul {
