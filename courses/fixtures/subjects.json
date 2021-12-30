@@ -1,214 +1,222 @@
 [
-  {
-    "model": "courses.subject",
-    "pk": 6,
-    "fields": {
-      "title": "Music",
-      "slug": "music"
-    }
-  },
-  {
-    "model": "courses.subject",
-    "pk": 8,
-    "fields": {
-      "title": "Software development",
-      "slug": "programming"
-    }
-  },
-  {
-    "model": "courses.subject",
-    "pk": 9,
-    "fields": {
-      "title": "Culinary",
-      "slug": "culinary"
-    }
-  },
-  {
-    "model": "courses.course",
-    "pk": 5,
-    "fields": {
-      "owner": 2,
-      "subject": 8,
-      "title": "Data structures with Python",
-      "slug": "Data_structures",
-      "overview": "Algorithms",
-      "created": "2021-09-16T14:44:27.036Z"
-    }
-  },
-  {
-    "model": "courses.course",
-    "pk": 6,
-    "fields": {
-      "owner": 1,
-      "subject": 9,
-      "title": "Base technics",
-      "slug": "base-technics",
-      "overview": "Base technics from culinary, as mother souces,  base knife skills, etc.",
-      "created": "2021-09-28T14:33:41.885Z"
-    }
-  },
-  {
-    "model": "courses.course",
-    "pk": 7,
-    "fields": {
-      "owner": 3,
-      "subject": 8,
-      "title": "The complete Javascript course 2021: From zero to hero",
-      "slug": "the-complete-javascript-course-2021-from-zero-to-hero",
-      "overview": "JavaScript is the most popular programming language in the world. It powers the entire modern web. It provides millions of high-paying jobs all over the world. This is the most complete JavaScript course on Udemy. It's an all-in-one package that will take you from the very fundamentals of JavaScript, all the way to building modern and complex applications.\r\n\r\nYou will learn modern JavaScript from the very beginning, step-by-step. I will guide you through practical and fun code examples, an important theory about how JavaScript works behind the scenes, and beautiful and complete projects.\r\n\r\nYou will also learn how to think like a developer, how to plan application features, how to architect your code, how to debug code, and a lot of other real-world skills that you will need on your developer job.",
-      "created": "2021-12-05T21:08:14.003Z"
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 5,
-    "fields": {
-      "course": 5,
-      "title": "Queue",
-      "description": "How to implement queues with python",
-      "order": 0
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 6,
-    "fields": {
-      "course": 5,
-      "title": "Stack",
-      "description": "How to implement stacks with python",
-      "order": 1
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 7,
-    "fields": {
-      "course": 5,
-      "title": "Queue",
-      "description": "testando",
-      "order": 2
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 8,
-    "fields": {
-      "course": 5,
-      "title": "stack",
-      "description": "teste",
-      "order": 3
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 9,
-    "fields": {
-      "course": 5,
-      "title": "Queue",
-      "description": "testing",
-      "order": 4
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 10,
-    "fields": {
-      "course": 5,
-      "title": "Stack",
-      "description": "test",
-      "order": 5
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 11,
-    "fields": {
-      "course": 5,
-      "title": "python data model",
-      "description": "testing",
-      "order": 6
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 12,
-    "fields": {
-      "course": 6,
-      "title": "Chicken stock",
-      "description": "How to do a great chicken stock",
-      "order": 1
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 13,
-    "fields": {
-      "course": 6,
-      "title": "Beef stock",
-      "description": "",
-      "order": 2
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 14,
-    "fields": {
-      "course": 7,
-      "title": "Javascript Fundamentals",
-      "description": "Values and variable; Data types; Basic operators; Logical operators.",
-      "order": 0
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 15,
-    "fields": {
-      "course": 7,
-      "title": "Javscript in the browser: DOM and events fundamentals",
-      "description": "Selecting and manipulating elements; Manipulating CSS styles; Working with classes.",
-      "order": 1
-    }
-  },
-  {
-    "model": "courses.module",
-    "pk": 16,
-    "fields": {
-      "course": 7,
-      "title": "How javascript works behind the scenes",
-      "description": "The Javascript engine and runtime; Scope and the Scope chain; Hoisting and TDZ in practice.",
-      "order": 2
-    }
-  },
-  {
-    "model": "courses.content",
-    "pk": 1,
-    "fields": {
-      "module": 12,
-      "contentType": 14,
-      "object_id": 2,
-      "order": 0
-    }
-  },
-  {
-    "model": "courses.video",
-    "pk": 1,
-    "fields": {
-      "owner": 1,
-      "title": "Classic Chicken stock - Chef Jean-Pierre",
-      "created": "2021-11-23T13:15:12.779Z",
-      "updated": "2021-11-23T13:15:12.779Z",
-      "url": "https://www.youtube.com/watch?v=6x0Jo78q2rU"
-    }
-  },
-  {
-    "model": "courses.video",
-    "pk": 2,
-    "fields": {
-      "owner": 1,
-      "title": "Classic Chicken stock - Chef Jean-Pierre",
-      "created": "2021-11-23T13:25:50.177Z",
-      "updated": "2021-11-23T13:25:50.177Z",
-      "url": "https://www.youtube.com/watch?v=6x0Jo78q2rU"
-    }
+{
+  "model": "courses.subject",
+  "pk": 6,
+  "fields": {
+    "title": "Music",
+    "slug": "music"
   }
+},
+{
+  "model": "courses.subject",
+  "pk": 8,
+  "fields": {
+    "title": "Software development",
+    "slug": "programming"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 9,
+  "fields": {
+    "title": "Culinary",
+    "slug": "culinary"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 5,
+  "fields": {
+    "owner": 2,
+    "subject": 8,
+    "title": "Data structures with Python",
+    "slug": "Data_structures",
+    "overview": "Algorithms",
+    "created": "2021-09-16T14:44:27.036Z",
+    "cover_photo": "courses/2021/12/28/python.jpg",
+    "students": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 6,
+  "fields": {
+    "owner": 1,
+    "subject": 9,
+    "title": "Base technics",
+    "slug": "base-technics",
+    "overview": "Base technics from culinary, as mother souces,  base knife skills, etc.",
+    "created": "2021-09-28T14:33:41.885Z",
+    "cover_photo": "courses/2021/12/28/base_techniques.jpg",
+    "students": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 7,
+  "fields": {
+    "owner": 3,
+    "subject": 8,
+    "title": "The complete Javascript course 2021: From zero to hero",
+    "slug": "the-complete-javascript-course-2021-from-zero-to-hero",
+    "overview": "JavaScript is the most popular programming language in the world. It powers the entire modern web. It provides millions of high-paying jobs all over the world. This is the most complete JavaScript course on Udemy. It's an all-in-one package that will take you from the very fundamentals of JavaScript, all the way to building modern and complex applications.\r\n\r\nYou will learn modern JavaScript from the very beginning, step-by-step. I will guide you through practical and fun code examples, an important theory about how JavaScript works behind the scenes, and beautiful and complete projects.\r\n\r\nYou will also learn how to think like a developer, how to plan application features, how to architect your code, how to debug code, and a lot of other real-world skills that you will need on your developer job.",
+    "created": "2021-12-05T21:08:14.003Z",
+    "cover_photo": "courses/2021/12/28/javascript.png",
+    "students": [
+      4
+    ]
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 5,
+  "fields": {
+    "course": 5,
+    "title": "Queue",
+    "description": "How to implement queues with python",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 6,
+  "fields": {
+    "course": 5,
+    "title": "Stack",
+    "description": "How to implement stacks with python",
+    "order": 1
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 7,
+  "fields": {
+    "course": 5,
+    "title": "Queue",
+    "description": "testando",
+    "order": 2
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 8,
+  "fields": {
+    "course": 5,
+    "title": "stack",
+    "description": "teste",
+    "order": 3
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 9,
+  "fields": {
+    "course": 5,
+    "title": "Queue",
+    "description": "testing",
+    "order": 4
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 10,
+  "fields": {
+    "course": 5,
+    "title": "Stack",
+    "description": "test",
+    "order": 5
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 11,
+  "fields": {
+    "course": 5,
+    "title": "python data model",
+    "description": "testing",
+    "order": 6
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 12,
+  "fields": {
+    "course": 6,
+    "title": "Chicken stock",
+    "description": "How to do a great chicken stock",
+    "order": 1
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 13,
+  "fields": {
+    "course": 6,
+    "title": "Beef stock",
+    "description": "",
+    "order": 2
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 14,
+  "fields": {
+    "course": 7,
+    "title": "Javascript Fundamentals",
+    "description": "Values and variable; Data types; Basic operators; Logical operators.",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 15,
+  "fields": {
+    "course": 7,
+    "title": "Javscript in the browser: DOM and events fundamentals",
+    "description": "Selecting and manipulating elements; Manipulating CSS styles; Working with classes.",
+    "order": 1
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 16,
+  "fields": {
+    "course": 7,
+    "title": "How javascript works behind the scenes",
+    "description": "The Javascript engine and runtime; Scope and the Scope chain; Hoisting and TDZ in practice.",
+    "order": 2
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 1,
+  "fields": {
+    "module": 12,
+    "contentType": 14,
+    "object_id": 2,
+    "order": 0
+  }
+},
+{
+  "model": "courses.video",
+  "pk": 1,
+  "fields": {
+    "owner": 1,
+    "title": "Classic Chicken stock - Chef Jean-Pierre",
+    "created": "2021-11-23T13:15:12.779Z",
+    "updated": "2021-11-23T13:15:12.779Z",
+    "url": "https://www.youtube.com/watch?v=6x0Jo78q2rU"
+  }
+},
+{
+  "model": "courses.video",
+  "pk": 2,
+  "fields": {
+    "owner": 1,
+    "title": "Classic Chicken stock - Chef Jean-Pierre",
+    "created": "2021-11-23T13:25:50.177Z",
+    "updated": "2021-11-23T13:25:50.177Z",
+    "url": "https://www.youtube.com/watch?v=6x0Jo78q2rU"
+  }
+}
 ]
