@@ -154,4 +154,4 @@ CACHES = {
 
 # AUTH_USER_MODEL: "accounts.User"
 
-django_on_heroku.setting(locals())
+django_on_heroku.settings(locals())
