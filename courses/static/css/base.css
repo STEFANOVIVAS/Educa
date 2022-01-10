@@ -244,11 +244,96 @@ h1 {
     margin:0;
 }
 
-.module {
-    padding:10px 20px;
-    float:left;
-    width:600px;
+.course-head {
+
+    background:#efefef;
+    text-align: center;
 }
+
+.course-content {
+    margin-top:40px;
+    
+}
+
+.course-contents i {
+
+    width: 20px;
+    height:15px;
+}
+.course-contents {
+    list-style-type:none;
+}
+.module {
+    padding:20px 40px;
+    /* float:left; */
+    /* width:800px;
+     */
+}
+
+.overview {
+    padding:10px;
+    width: 650px;
+    border-style:solid;
+    border-width: 1px ;
+    /* border-radius: 1.5em; */
+}
+.overview p {
+    text-align: justify;
+}
+
+.accordion {
+    width: 650px;
+}
+
+.accordion-button:not(.collapsed){
+    color: black;
+    background-color: #80cf92;
+
+}
+
+.accordion-button:focus{
+    box-shadow: none;
+}
+.accordion-body {
+    display:block;
+    float:none!important;
+}
+.accordion-body li{
+    list-style: none;
+    display:list-item;
+    transition: 0.2s!important;
+
+}
+
+.enroll-login-access-button {
+    width: 266px;
+    height:50px;
+}
+
+
+
+
+.sidebar img {
+    width:290px;
+    height:240px;
+    margin:4px;
+}
+
+.sidebar {
+    position:sticky; 
+    top:5%;  
+    width: 300px;
+    height: 440px;
+    border-color: #aaa;
+    /* background-color:#efefef; */
+    color: black;
+}
+
+.sidebar.card-body {
+    max-height: 180px;
+
+}
+
 
 .module h3 {
     margin:20px 0 0;
@@ -263,6 +348,7 @@ h1 {
 }
 
 #header {
+    
     background:#4dcc43;
     overflow:auto;
     padding:10px 20px;
@@ -374,15 +460,16 @@ label {
     margin:0 0 8px 0;
 }
 
-input, select, textarea {
+ input, select, textarea {
     border:1px solid #ccc;
     border-bottom:3px solid #ccc;
     padding:8px 12px;
     font-size:16px;
     font-family:'Roboto', sans-serif;
-    float:left;
+    /* float:left; */
     clear:both;
-    width:300px;
+    width:260px;
+   
 }
 
 textarea {
@@ -395,13 +482,15 @@ select {
 
 input[type=submit], a.button {
     border-radius:5px;
-    background:#4dcc43;
+    background:#3fad37;
     color:#fff;
     font-size:16px;
     text-transform:uppercase;
     border:none;
     padding:10px 20px;
-    margin:20px 0;
+    margin:10px 0;
+    width: 266px;
+    
 }
 
 a.secondary-button {
@@ -411,7 +500,7 @@ a.secondary-button {
 }
 
 input[type=submit]:hover, a.button:hover {
-    background:#3fad37;
+    background:#4dcc43;
 }
 
 ul#course-modules {

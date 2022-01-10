@@ -26,7 +26,7 @@
           <li>No modules yet.</li>
         {% endfor %}
       </ul>
-      <p><a href="{% url "course_module_update" course.id %}">
+      <p><a href="{% url 'course_module_update' course.id %}">
       Edit modules</a></p>
     </div>
     <div class="module">
@@ -39,10 +39,10 @@
           <div data-id="{{ content.id }}">
             {% with item=content.item %}
               <p>{{ item }} ({{ item|model_name }})</p>
-              <a href="{% url "module_content_update" module.id item|model_name item.id %}">
+              <a href="{% url 'module_content_update' module.id item|model_name item.id %}">
                 Edit
               </a>
-              <form action="{% url "module_content_delete" content.id %}" method="post">
+              <form action="{% url 'module_content_delete' content.id %}" method="post">
                 <input type="submit" value="Delete">
                 {% csrf_token %}
               </form>

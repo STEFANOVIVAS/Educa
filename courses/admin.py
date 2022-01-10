@@ -10,7 +10,10 @@ class SubjectAdmin(admin.ModelAdmin):
     list_display=['title','slug']
     prepopulated_fields={'slug':('title',)}
     
-class ModuleInline(admin.StackedInline):
+# class ContentInline(admin.StackedInline):
+#     model=Content
+@admin.register(Module)
+class ModuleInline(admin.ModelAdmin):
     model=Module
     
 @admin.register(Course)
@@ -19,4 +22,4 @@ class CourseAdmin(admin.ModelAdmin):
     list_filter=['created', 'subject']
     search_fields=['title','overview']
     prepopulated_fields={'slug':('title',)}
-    inlines=[ModuleInline]
+    # inlines=[ModuleInline]
