@@ -38,9 +38,13 @@
                   </button>
                 </h2>
                 <div id="panelsStayOpen-collapse{{module.order|add:1}}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{module.order|add:1}}">
-                  <ul class="accordion-body m-0">
+                  <ul class="accordion-body m-0 p-2">
                     {% for content in module.contents.all %}
-                    <li class="accordion-body-item p-1"> {{content.item.title}} </li>
+                    
+                    <li class="accordion-body-item p-1"> 
+                      <i class="fas fa-play-circle"></i>
+                      {{content.item.title}} 
+                    </li>
                     {% endfor %}
                   </ul>
     

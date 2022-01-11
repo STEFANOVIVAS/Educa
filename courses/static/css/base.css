@@ -264,11 +264,13 @@ h1 {
     list-style-type:none;
 }
 .module {
-    padding:20px 40px;
-    /* float:left; */
-    /* width:800px;
-     */
+    padding:20px;
+    float:left;
+    width:900px;
+    
 }
+
+
 
 .overview {
     padding:10px;
@@ -305,6 +307,10 @@ h1 {
 
 }
 
+.accordion-body li i {
+    margin:0 7px;
+}
+
 .enroll-login-access-button {
     width: 266px;
     height:50px;
@@ -334,11 +340,15 @@ h1 {
 
 }
 
+.module h2 {
+    margin-bottom: 30px!important;
+}
 
-.module h3 {
-    margin:20px 0 0;
+.module h4 {
+    margin:20px 0;
     padding:0;
     width:100%;
+    text-align: justify;
 }
 
 .module p {
@@ -385,13 +395,13 @@ h1 {
 }
 
 .contents {
-    width:20%;
+    width:250px;
     padding:10px;
     float:left;
     background:#333;
     color: #fff;
     font-family:'Roboto', sans-serif;
-    height:30%;
+    height:auto;
 }
 
 .contents ul {
@@ -433,6 +443,10 @@ h1 {
     cursor:move;
 }
 
+.contents p a {
+    padding:10px;
+}
+
 ul.content-types li {
     list-style:none;
     float:left;
@@ -466,7 +480,7 @@ label {
     padding:8px 12px;
     font-size:16px;
     font-family:'Roboto', sans-serif;
-    /* float:left; */
+    float:left;
     clear:both;
     width:260px;
    
