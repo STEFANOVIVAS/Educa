@@ -24,31 +24,25 @@
       {% endif %}
     </h1>
   </div>
-  <section id="courses">
+  <section id="courses__subject">
     <div class="container">
-      <div class="row">
-        <div class="col-12" id="title-courses">
-          <h3 class="main-title">Expand your carrer job oportunities with this courses</h3>
-        </div>
-       
+      <div class="course__item row">
+               
+
         {% for course in courses %}
-        <div class="card col-md-4 m-3 card-grid p-0">
+        <div class="card col-md-4 m-4 card-grid p-0 rounded-0 border-0">
           {% if course.cover_photo %}
-          <img src="{{course.cover_photo.url}}" class="card-img-top m-1 card-photo" alt="...">
+          <img src="{{course.cover_photo.url}}" class="card-img-top card__image" alt="...">
           {% else %}
-          <img src="#" class="card-img-top m-1 card-photo" alt="...">
+          <img src="#" class="card-img-top card__image" alt="...">
           {% endif %}
-          <div class="card-body p-2">
-            <h5 class="card-title card-font">{{ course.title|truncatewords:9}}</h5>
+          <div class="card-body border-1 p-2">
+             <a href="{% url 'course_detail' course.pk %}"><h5 class="card-title card-font">{{ course.title|truncatewords:9}}</h5></a>
             <p class="card-text card-creator">Created by {{course.owner}}</p>
-  
-          </div>
-          <div class="card-footer text-muted mx-auto align-self-end">
-            <a href="{% url 'course_detail' course.pk %}" class="btn btn-primary bg-success align-self-end">Access the
-              course!</a>
           </div>
         </div>
         {% endfor %}
+         
       </div>
     </div>
   </section>

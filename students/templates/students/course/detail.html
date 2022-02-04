@@ -1,40 +1,51 @@
 {% extends "base.html" %}
-
+{% load embed_video_tags %}
 
 {% block title %}
   {{ course.title }}
 {% endblock %}
 
 {% block content %}
-  <h1>
-    {{ module.title }}
-  </h1>
-  <div class="contents">
-    <h3>Modules</h3>
-    <ul id="modules">
-      {% for m in modules %}
-        <li data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
-          <a href="{% url "student_course_detail_module" course.id m.id %}">
-            <span>
-              Module <span class="order">{{ m.order|add:1 }}</span>
-            </span>
-            <br>
-            {{ m.title }}
-          </a>
-        </li>
-      {% empty %}
-        <li>No modules yet.</li>
-      {% endfor %}
-    </ul>
-  </div>
-  <div class="module">
-    
-      {% for content in module.contents.all %}
-        {% with item=content.item %}
-          <h2>{{ item.title }}</h2>
-          {{ item.render }}
-        {% endwith %}
-      {% endfor %}
-    
+  <h1>{{module.order|add:1}}.{{ module.title }}</h1>
+  <div class="container-lg justify-content-center video__content">
+    <div class="container-lg main-student-detail p-0 m-0">
+      <div class="student-module">
+        
+        {{content.item.render}}
+             
+      </div>
+      <hr>
+      <div class="container-lg course-content justify-content-center p-0">
+        <h2>Course content</h2>
+        <div class="accordion my-4 id="accordionPanelsStayOpenExample">
+          {% for module in course.modules.all %}
+          <div class="accordion-item">
+            <h2 class="accordion-header bg-secondary" id="panelsStayOpen-heading{{module.order|add:1}}">
+              <button class="accordion-button collapsed bg-muted" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapse{{module.order|add:1}}" aria-expanded="true"
+                aria-controls="panelsStayOpen-collapse{{module.order|add:1}}">
+                {{module.order|add:1}} - {{module.title}}
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapse{{module.order|add:1}}" class="accordion-collapse collapse"
+              aria-labelledby="panelsStayOpen-heading{{module.order|add:1}}">
+              <ul class="accordion-body m-0 p-2 list-group">
+                {% for content in module.contents.all %}
+
+                <li class="accordion-body-item p-1 list-group-item border-0">
+                  <input class="form-check-input me-3 p-0" type="checkbox" value="" aria-label="...">
+                  <a href="{% url 'student_module_detail' course.id content.module.id content.id %}">
+                    {{module.order|add:1}}.{{content.order|add:1}} {{content.item.title}}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock %}

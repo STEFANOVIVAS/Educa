@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from . forms import CourseEnrollForm
-from courses.models import Course
+from courses.models import Course,Module
 from django.contrib.auth.decorators import login_required
 from students.forms import CourseEnrollForm
 from django.views.generic.detail import DetailView
@@ -44,15 +44,27 @@ def student_course_list_view(request):
     return render(request, 'students/course/list.html', {'courses': courses})
 
 
-@login_required
-def student_course_detail_view(request, course_id):
-    course = get_object_or_404(Course, id=course_id)
-    modules = course.modules.all()
-    return render(request, 'students/course/detail.html', {'course': course, 'modules': modules})
+class StudentCourseDetailView(DetailView):
+    model = Course
+    template_name = 'students/course/detail.html'
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(students__in=[self.request.user])
 
-@login_required
-def student_course_detail_module(request, course_id, module_id):
-    course = get_object_or_404(Course, id=course_id)
-    module = course.modules.get(id=module_id)
-    return render(request, 'students/course/detail.html', {'course': course, 'module': module})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # get course object
+        course = self.get_object()
+        # get first module
+        module=course.modules.all()[0]
+        context['module'] = module
+        context['content']=module.contents.all()[0]
+        return context
+
+def student_module_detail(request,course_id,module_id, content_id):
+    course=Course.objects.get(id=course_id)
+    module=course.modules.get(id=module_id)
+    content=module.contents.get(id=content_id)
+    return render(request,'students/course/detail.html', {'content': content,'course':course})
+    #refatorar função

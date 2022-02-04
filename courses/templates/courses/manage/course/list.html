@@ -4,18 +4,22 @@
 
 {% block content %}
     <h1>My courses</h1>
-    <div class="module">
+    <div class="container module">
         {% for course in object_list %}
-            <div class="course-info">
+            <div class="course-info col-md-4">
                 <h3>{{course.title}}</h3>
-                <p>
-                    <a href="{% url 'update_course' course.id %}">Edit Course</a>
-                    <a href="{% url 'delete_course' course.id %}">Delete Course</a>
-                    <a href="{% url 'course_module_update' course.id %}">Edit modules</a>
-                    {% if course.modules.count > 0 %}
-                        <a href="{% url 'module_content_list' course.modules.first.id %}">Manage contents</a>
-                    {% endif %}
-                </p>
+                <div class="manage__courses">
+                    <div class="manage__courses__button"><a class="text-white bg-secondary" href="{% url 'update_course' course.id %}">Edit Course</a></div>
+                    
+                    <div class="manage__courses__button"><a class="text-white bg-danger"href="{% url 'delete_course' course.id %}">Delete Course</a></div>
+                    <div class="manage__courses__button"><a class="text-white bg-secondary href="{% url 'course_module_update' course.id %}">Edit modules</a></div>
+                    <div class="manage__courses__button">
+                        {% if course.modules.count > 0 %}
+                            <a class="text-white bg-secondary href="{% url 'module_content_list' course.modules.first.id %}">Manage contents</a>
+                        {% endif %}
+                    </div>
+                </div>
+                
             </div>
 
         {% empty %}

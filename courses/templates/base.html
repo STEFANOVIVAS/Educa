@@ -14,71 +14,77 @@
 </head>
 
 <body>
-
-  <nav class="navbar navbar-expand-lg bg-success bg-opacity-50">
-    <div class="container">
-      <a class="navbar-brand logo-link" href="{% url 'course_list' %}">
+  <header>
+    
+    <nav class="navbar navbar-expand-lg bg-success p-1 sticky-top navbar-dark text-white" id="main__navbar">
+      
+      <a class="navbar-brand logo-link mx-3" href="{% url 'course_list' %}">
         <img src="{% static 'courses/school.svg' %}" alt="Educa logo" class="d-inline-block align-text-center"> Educa
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      
+      <button class="navbar-toggler mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links"
+          aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-categories" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
+      
+       
+        
+          <div class="navbar-nav collapse navbar-collapse m-1 justify-content-end" id="nav-links">
+            <div class="navbar-nav navbar-links p-1">
+              <a class="nav-link teach-link" href="{% url 'manage_course_list' %}">Teach on Educa</a>
+              <div class="btn-group dropright">
+                <a class="nav-link dropdown-toggle" role="button"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+                </a>
+                {% total_subjects as subjects %}
+                <div class="dropdown-menu subjects bg-success" aria-labelledby="navbarDropdown">
+                  {% for subject in subjects %}
+                  <a class="dropdown-item bg-transparent" id="categories"
+                      href="{% url 'course_list_subject' subject.slug %}">{{subject}}</a></li>
+                  {% endfor %}
 
-            {% total_subjects as subjects %}
-            <ul class="dropdown-menu subjects" aria-labelledby="navbarDropdown">
-              {% for subject in subjects %}
-              <li><a class="dropdown-item" id="categories"
-                  href="{% url 'course_list_subject' subject.slug %}">{{subject}}</a></li>
-              {% endfor %}
+                </div>
+              </div>
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-contact">Contact us</a>
+              {% if request.user.is_authenticated %}
+              <div class="btn-group dropright">
+               
+                  <a class="nav-link dropdown-toggle" role="button"
+                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ request.user }}
+                  </a>
+                  <div class="dropdown-menu bg-success" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item bg-transparent" href="{% url 'student_course_list' %}">My learning</a>
+                    <a class="dropdown-item bg-transparent" href="{% url 'manage_course_list' %}">My courses</a>
+                    <a class="dropdown-item bg-transparent" href="#">Settings</a>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item bg-transparent" href="{% url 'logout' %}">Sign out</a></li>
+                  </div>
+                </li>
 
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link teach-link" href="{% url 'manage_course_list' %}">Teach on Educa</a>
-          </li>
-          <li>
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-contact">Contact us</a>
-          </li>
-
-          {% if request.user.is_authenticated %}
-          <li class="nav-item dropdown profile-dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              {{ request.user }}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{% url 'student_course_list' %}">My learning</a></li>
-              <li><a class="dropdown-item" href="{% url 'manage_course_list' %}">My courses</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
-            </ul>
-          </li>
-
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'login' %}">Sign in</a>
-          </li>
-          {% endif %}
-        </ul>
-        <form class="d-flex ms-3">
-          <input class="form-control me-2 col-md-4" type="search" placeholder="Search for anything" aria-label="Search">
-          <button class="btn btn-secondary" type="submit">Search</button>
-        </form>
-
-      </div>
-    </div>
-  </nav>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'login' %}">Sign in</a>
+                </li>
+                {% endif %}
+              </div> 
+              <hr class="dropdown-divider"/>
+              <div class="form-group my-1 mx-2">
+                <div class="form-outline">
+                  <input type="search" id="search__form" class="form-control-dropdown" placeholder="Search">
+                  <button type="button" class="btn btn-dark btn__search">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+    </nav>
+  </header>
   <div id="content">
     {% block content %}
 
