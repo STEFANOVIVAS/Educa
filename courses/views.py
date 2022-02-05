@@ -15,6 +15,7 @@ from django.db.models import Count
 from django.core.cache import cache
 
 
+
 class OwnerMixin(object):
     def get_queryset(self):
         qs = super().get_queryset()
@@ -29,7 +30,7 @@ class OwnerEditMixin(object):
 
 class OwnerCourseMixin(OwnerMixin, LoginRequiredMixin, PermissionRequiredMixin):
     model = Course
-    fields = ['subject', 'title', 'slug', 'overview', 'cover_photo']
+    fields = ['subject', 'title', 'slug', 'overview']
     success_url = reverse_lazy('manage_course_list')
 
 
@@ -48,6 +49,7 @@ class CourseCreateView(OwnerCourseEditMixin, CreateView):
 
 class CourseUpdateView(OwnerCourseEditMixin, UpdateView):
     permission_required = 'courses.change_course'
+   
 
 
 class CourseDeleteView(OwnerCourseMixin, DeleteView):

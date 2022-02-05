@@ -8,14 +8,14 @@
 {% block content %}
   {% with course=module.course %}
     <h1> {{ course.title }} course</h1>
-    <div class="main container d-flex justify-content-start m-0 p-0">
-      <div class="contents">
+    <div class="main__content container-lg d-flex justify-content-start m-0 p-0">
+      <div class="contents manage__content">
         <h3>Modules</h3>
         <ul id="modules">
           {% for m in course.modules.all %}
             <li data-id="{{ m.id }}" {% if m == module %}
             class="selected"{% endif %}>
-              <a href="{% url "module_content_list" m.id %}">
+              <a href="{% url 'module_content_list' m.id %}">
                 <span>
                   Module <span class="order">{{ m.order|add:1 }}</span>
                 </span>
@@ -64,7 +64,20 @@
           <li><a href="{% url "module_content_create" module.id "file" %}">
           File</a></li>
         </ul>
+        <h4 class="change__module">Change module:</h4> 
+        <div class="dropdown change__module">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Change module
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {% for m in course.modules.all %}
+            <li><a class="dropdown-item" href="{% url 'module_content_list' m.id %}">Module {{m.order|add:1}} - {{m.title}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        
       </div>
+      
     </div>
   {% endwith %}
 {% endblock %}
