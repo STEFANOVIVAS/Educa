@@ -29,3 +29,11 @@ def total_courses(subject=None):
     if subject:
         courses = Course.objects.filter(subject__title=subject)
     return courses
+
+@register.simple_tag
+def total_contents(course_obj):
+    total_contents=0
+    course=Course.objects.get(title=course_obj)
+    for module in course.modules.all():
+        total_contents=module.contents.count()
+    return total_contents

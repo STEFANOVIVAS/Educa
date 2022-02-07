@@ -2,43 +2,139 @@
 {% load course %}
 
 {% block title %}
-  {{ object.title }}
+{{ object.title }}
 {% endblock %}
 
 {% block content %}
-  {% with subject=object.subject %}
-    <h1>
-      {{ object.title }}
-    </h1>
-    <div class="module">
-      <h2>Overview</h2>
+{% with subject=course.subject %}
+
+    <div class="course-head">
+      <h1>
+        {{ course.title }}
+      </h1>
       <p>
-        <a href="{% url "course_list_subject" subject.slug %}">
-        {{ subject.title }}</a>.
-        {{ object.modules.count }} modules.
-        Instructor: {{ object.owner.get_full_name }}
+        <a href="{% url 'course_list_subject' subject.slug %}">
+          {{ subject.title }}</a>.
+        {{ course.modules.count }} modules.
+        Instructor: {{ course.owner }}
       </p>
-      {{ object.overview|linebreaks }}
-      {% if request.user.is_authenticated %}
-          {% if request.user|is_enrolled:object %}
-            <p>
-              You have already enroll this course!
-            <a href="{% url 'student_course_detail' object.id %}">
-              Access now!
-            </a></p>
-                   
-          {% else %}
-            <form action="{% url 'student_enroll_course' %}" method="post">
-            {{ enroll_form }}
-            {% csrf_token %}
-            <input type="submit" value="Enroll now">
-            </form>
-          {% endif %}  
-      {% else %}
-        <a href="{% url 'login' %}" class="button">
-          Register to enroll
-        </a>
-      {% endif %}
     </div>
-  {% endwith %}
+    <div class="container-xl d-flex justify-content-center m-2 p-0">
+      <div class="main__course__detail m-2">
+        <div class="overview">
+          <h2>Overview</h2>
+          <p>{{ object.overview }}</p>
+        </div>
+        <div class="course-content my-4">
+          <h2>Course content</h2>
+          <div class="accordion my-4" id="accordionPanelsStayOpenExample">
+            {% for module in course.modules.all %}
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-heading{{module.order|add:1}}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapse{{module.order|add:1}}" aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapse{{module.order|add:1}}">
+                  {{module.order|add:1}} - {{module.title}}
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapse{{module.order|add:1}}" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-heading{{module.order|add:1}}">
+                <ul class="accordion-body m-0 p-2">
+                  {% for content in module.contents.all %}
+
+                  <li class="accordion-body-item p-1">
+                    <i class="fas fa-play-circle"></i>
+                    {{content.item.title}}
+                  </li>
+                  {% endfor %}
+                </ul>
+
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="access_course justify-content-center">
+          <div>
+            {% if request.user.is_authenticated %}
+            {% if request.user|is_enrolled:object %}
+
+            <a href="{% url 'student_course_detail' course.id %}"
+              class="button btn btn-success">
+              Go to course!
+            </a>
+            {% else %}
+            <form action="{% url 'student_enroll_course' %}" method="post">
+              {{ enroll_form }}
+              {% csrf_token %}
+              <input type="submit" value="Enroll now">
+            </form>
+
+            {% endif %}
+          {% else %}
+
+            <a href="{% url 'login' %}" class="button btn btn-success">
+              Login to enroll
+            </a>
+
+          {% endif %}
+          </div>
+
+
+        </div>
+      </div>
+      <div class="course__card__sidebar mx-2">
+        {% if course.cover_photo %}
+        <img src="{{course.cover_photo.url}}" class="card-img-top card__img" alt="...">
+        {% else %}
+        <img src="#" class="card-img-top m-1 card-photo card__img" alt="...">
+        {% endif %}
+        <div class="card-body border-1 p-2 sidebar__card__body ">
+          <h5 class="card-title card-font">{{ course.title|truncatewords:9}}</h5>
+          <h5 class="card-title my-2">This course contains:</h5>
+          <ul class="course-contents">
+            <li class="course__content__font">
+              <i class="fas fa-book"></i>
+              {{course.modules.count}} modules
+            </li>
+            <li class="course__content__font">
+              <i class="fas fa-tv"></i>
+              {% total_contents course %} contents
+            </li>
+          </ul>
+
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          <div class="enroll-login-access-button">
+          {% if request.user.is_authenticated %}
+            {% if request.user|is_enrolled:object %}
+
+            <a href="{% url 'student_course_detail' course.id %}"
+              class="button btn btn-success">
+              Go to course!
+            </a>
+            {% else %}
+            <form action="{% url 'student_enroll_course' %}" method="post">
+              {{ enroll_form }}
+              {% csrf_token %}
+              <input type="submit" value="Enroll now">
+            </form>
+
+            {% endif %}
+          {% else %}
+
+            <a href="{% url 'login' %}" class="button btn btn-success">
+              Login to enroll
+            </a>
+
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    </div>
+
+{% endwith %}
 {% endblock %}

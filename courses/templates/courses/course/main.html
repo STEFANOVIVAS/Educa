@@ -6,163 +6,154 @@
 
 
 {% block content %}
-<div class="container" id="container-carousel">
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-        aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-        aria-label="Slide 2"></button>
 
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{% static 'courses/main2.jpg' %}" class="d-block w-100 carousel-imagem-1" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h2>Tired of a tradicional learning?</h2>
-          <p>Study with the best teachers in the world whenever you want!</p>
+  <header>
+    <div class="header">
+      <img src="{% static 'courses/image1-unsplash.jpg' %}" class="d-block header__image" alt="...">
+      <div class="header__title">
+        <h2>Do you want to create a new course and share your knowledge? </h1>
+        <h5>How about collecting the best existing content and setting up your own course?</h5>
+        <div class='header__button'>
+          <a href="#how__it__works">Learn more &DownArrow;</a>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'courses/main3.jpg' %}" class="d-block w-100 carousel-imagem-2" alt="...">
-        <div class="carousel-caption d-none d-md-block carousel-caption-dois">
-          <h2>Offers close today!</h2>
-          <p>Acquire courses from $ 22,90.</p>
-          <a href="" class="button-carousel-dois">See our courses.</a>
-
-        </div>
+        
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
-<!--How it works-->
-<section id="how-works">
-  <div class="container">
-    <div class="row justify-content-around">
-      <div class="col-12" id="title-how-works">
-        <h3 class="main-title">How can i use Educa platform?</h3>
-      </div>
-      <div class="card col-md-3 border-0 card-grid-how-works p-0">
-        <div class="card-body text-secondary educa-card">
-          <i class="fas fa-search"></i>
-          <h5 class="card-title mb-3 fw-bold">First</h5>
-          <p class="card-text">Search for content on the internet for the subjects you want.</p>
+
+  </header>
+  
+  
+  
+  <!--Courses-->
+  <section class=" section mx-3 mb-5" id="courses">
+    <div class="container courses__section">
+      <div class="course__item row d-flex justify-content-start">
+        <div class="col-12" id="title-courses">
+          <h3 class="section__title fw-bold">Expand your carrer job oportunities with this courses</h3>
         </div>
-      </div>
-      <div class="card col-md-3 border-0 card-grid-how-works p-0">
-        <div class="card-body text-secondary educa-card">
-          <i class="fab fa-youtube"></i>
-          <h5 class="card-title mb-3 fw-bold">Second</h5>
-          <p class="card-text">Upload videos, images, or text files from different sources to create your own modules.</p>
+
+        {% total_courses as courses %}
+        {% for course in courses %}
+        <div class="card col-md-4 m-4 card-grid p-0 rounded-0 border-0">
+          {% if course.cover_photo %}
+          <img src="{{course.cover_photo.url}}" class="card-img-top card__image" alt="...">
+          {% else %}
+          <img src="#" class="card-img-top card__image" alt="...">
+          {% endif %}
+          <div class="card-body border-1 p-2">
+            <a href="{% url 'course_detail' course.pk %}"><h5 class="card-title card-font">{{ course.title|truncatewords:9}}</h5></a>
+            <p class="card-text card-creator">Created by {{course.owner}}</p>
+
+          </div>
         </div>
+        {% endfor %}
       </div>
-      <div class="card col-md-3 border-0 card-grid-how-works p-0">
-        <div class="card-body text-secondary educa-card">
-          <i class="fas fa-share-alt-square"></i>
-          <h5 class="card-title mb-3 fw-bold">Third</h5>
-          <p class="card-text">Make your own playlist to study or share with people.</p>
+    </div>
+  </section>
+  <!--How it works-->
+  <section class="section my-5" id="how__it__works">
+    <div class="container">
+      <div class="row mb-5">
+  
+        <div class="col-12 ">
+          <h3 class="section__title fw-bold">How Educa works?</h3>
+        </div>
+        <div class="steps">
+          <img src="{% static 'courses/5576597.jpg' %}" class="steps__img" alt="">
+          <div class="search__feature">
+            
+            <div class="features__icon">
+              <i class="fas fa-search fa-lg"></i>
+            </div>
+           
+            <h3 class="steps__title mb-3">First</h3>
+            <h5 class="card-text">Search for content on the internet for the subjects you want.</h5>
+          </div>
+          <div class="upload__feature">
+            
+            <div class="features__icon fa-lg">
+              <i class="fab fa-youtube "></i>
+            </div>
+            <h3 class="steps__title mb-3">Second</h3>
+            <h5 class="card-text">Upload videos, images, or text files from different sources to create your own modules.</h5>
+          </div>
+          <img src="{% static 'courses/4799410.jpg' %}" class="steps__img" alt="">
+          <img src="{% static 'courses/4617305.jpg' %}" class="steps__img steps__img3" alt="">
+          <div class="playlist__feature">
+            
+            <div class="features__icon">
+              <i class="fas fa-share-alt-square fa-lg"></i>
+            </div>
+            <h3 class="steps__title mb-3">Third</h3>
+            <h5 class="card-text">Make your own playlist of modules to create courses for self learning or share with other
+              people.</h5>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  
+   
 
-<!--Courses-->
-<section id="courses">
-  <div class="container">
-    <div class="row">
-      <div class="col-12" id="title-courses">
-        <h3 class="main-title">Expand your carrer job oportunities with this courses</h3>
-      </div>
-
-      {% total_courses as courses %}
-      {% for course in courses %}
-      <div class="card col-md-4 m-3 card-grid p-0">
-        {% if course.cover_photo %}
-        <img src="{{course.cover_photo.url}}" class="card-img-top m-1 card-photo" alt="...">
-        {% else %}
-        <img src="#" class="card-img-top m-1 card-photo" alt="...">
-        {% endif %}
-        <div class="card-body p-2">
-          <h5 class="card-title card-font">{{ course.title|truncatewords:9}}</h5>
-          <p class="card-text card-creator">Created by {{course.owner}}</p>
-
+  <!--Subjects-->
+  <section class="section my-5" id="subjects">
+    
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-12">
+          <h3 class="section__title fw-bold"> Main categories</h3>
         </div>
-        <div class="card-footer text-muted mx-auto align-self-end">
-          <a href="{% url 'course_detail' course.pk %}" class="btn btn-primary bg-success align-self-end">Access the
-            course!</a>
+
+        <div class="col-md-4 subject-box business">
+          <i class="fas fa-briefcase"></i>
+          <a href="#">Business</a>
+          <p>Improve your managment skills!</p>
+        </div>
+        <div class="col-md-4 subject-box culinary">
+          <i class="fas fa-bread-slice"></i>
+          <a href="{% url 'course_list_subject' 'culinary' %}">Culinary</a>
+          <p>Become an amateur cook or a professional chef</p>
+        </div>
+        <div class="col-md-4 subject-box music">
+          <i class="fas fa-guitar"></i>
+          <a href="{% url 'course_list_subject' 'music' %}">Music</a>
+          <p>Choose from different instruments and start playing</p>
+        </div>
+
+        <div class="col-md-4 subject-box personal">
+          <i class="fas fa-user-check"></i>
+          <a href="#">Personal development</a>
+          <p>Improve your quality of life and develop personal skills</p>
+        </div>
+        <div class="col-md-4 subject-box photography">
+          <i class="fas fa-camera"></i>
+          <a href="#">Photography</a>
+          <p>Save your trips from the best angles</p>
+        </div>
+        <div class="col-md-4 subject-box software">
+          <i class="fas fa-code"></i>
+          <a href="{% url 'course_list_subject' 'software-development' %}">Software development</a>
+          <p>Get a job with the most wanted skills at the moment</p>
+        </div>
+
+      </div>
+    </div>
+   
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="footer-links">
+            <li><a href="{% url 'manage_course_list' %}">Teach on Educa</a></li>
+            <li><a class="navbar-brand logo-link" href="{% url 'course_list' %}">
+                <img src="{% static 'courses/school.svg' %}" alt="Educa logo" class="d-inline-block align-text-center">
+                Educa
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-      {% endfor %}
     </div>
-  </div>
-</section>
-
-
-<!--Subjects-->
-<div id="courses-subjects">
-  <div class="container">
-    <div class="row mb-5">
-      <div class="col-12">
-        <h3 class="sub-title"> Main categories</h3>
-      </div>
-
-      <div class="col-md-4 subject-box business">
-        <i class="fas fa-briefcase"></i>
-        <a href="#">Business</a>
-        <p>Improve your managment skills!</p>
-      </div>
-      <div class="col-md-4 subject-box culinary">
-        <i class="fas fa-bread-slice"></i>
-        <a href="{% url 'course_list_subject' 'culinary' %}">Culinary</a>
-        <p>Become an amateur cook or a professional chef</p>
-      </div>
-      <div class="col-md-4 subject-box music">
-        <i class="fas fa-guitar"></i>
-        <a href="{% url 'course_list_subject' 'music' %}">Music</a>
-        <p>Choose from different instruments and start playing</p>
-      </div>
-
-      <div class="col-md-4 subject-box personal">
-        <i class="fas fa-user-check"></i>
-        <a href="#">Personal development</a>
-        <p>Improve your quality of life and develop personal skills</p>
-      </div>
-      <div class="col-md-4 subject-box photography">
-        <i class="fas fa-camera"></i>
-        <a href="#">Photography</a>
-        <p>Save your trips from the best angles</p>
-      </div>
-      <div class="col-md-4 subject-box software">
-        <i class="fas fa-code"></i>
-        <a href="{% url 'course_list_subject' 'programming' %}">Software development</a>
-        <p>Get a job with the most wanted skills at the moment</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 desenvolvido">
-        <ul class="col-4 footer-links">
-          <li><a href="{% url 'manage_course_list' %}">Teach on Educa</a></li>
-          <li><a class="navbar-brand logo-link" href="{% url 'course_list' %}">
-              <img src="{% static 'courses/school.svg' %}" alt="Educa logo" class="d-inline-block align-text-center">
-              Educa
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-</footer>
+  </footer>
 {% endblock %}

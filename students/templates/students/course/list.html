@@ -5,19 +5,50 @@
 {% block content %}
   <h1>My courses</h1>
 
-  <div class="module">
+  <section class="student__enrolled__courses">
+
+  
+    <div class="container my-4 mx-1">
+      <div class="course__item row">
+              
+
+        {% for course in courses %}
+        <div class="card col-md-4 m-4 card-grid p-0 rounded-0 border-0">
+          {% if course.cover_photo %}
+          <img src="{{course.cover_photo.url}}" class="card-img-top card__image" alt="...">
+          {% else %}
+          <img src="#" class="card-img-top card__image" alt="...">
+          {% endif %}
+          <div class="card-body border-1 p-2">
+            <a href="{% url 'course_detail' course.pk %}"><h5 class="card-title card-font">{{ course.title|truncatewords:9}}</h5></a>
+            <p class="card-text card-creator">Created by {{course.owner}}</p>
+          </div>
+        </div>
+        {% empty %}
+        <p>
+          You are not enrolled in any courses yet.
+          <a href="{% url 'course_list' %}">Browse courses</a>
+          to enroll in a course.
+        </p>
+        {% endfor %}
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- <div class="module">
     {% for course in courses %}
       <div class="course-info">
         <h3>{{ course.title }}</h3>
-        <p><a href="{% url "student_course_detail" course.id %}">
+        <p><a href="{% url 'student_course_detail' course.id %}">
         Access contents</a></p>
       </div>
     {% empty %}
       <p>
         You are not enrolled in any courses yet.
-        <a href="{% url "course_list" %}">Browse courses</a>
+        <a href="{% url 'course_list' %}">Browse courses</a>
         to enroll in a course.
       </p>
     {% endfor %}
-  </div>
+  </div> -->
 {% endblock %}

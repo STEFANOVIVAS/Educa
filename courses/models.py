@@ -40,7 +40,7 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
-
+       
 class Module(models.Model):
     course = models.ForeignKey(
         Course, related_name='modules', on_delete=models.CASCADE)
@@ -53,6 +53,8 @@ class Module(models.Model):
 
     def __str__(self):
         return f'{self.order}. {self.title}'
+
+    
 
 
 class Content(models.Model):
@@ -68,6 +70,7 @@ class Content(models.Model):
     class Meta:
         ordering = ['order']
 
+   
 
 class ItemBase(models.Model):
     owner = models.ForeignKey(
