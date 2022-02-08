@@ -20,7 +20,7 @@
       </p>
     </div>
     <div class="container-xl d-flex justify-content-center m-2 p-0">
-      <div class="main__course__detail m-2">
+      <div class="main__course__detail m-3">
         <div class="overview">
           <h2>Overview</h2>
           <p>{{ object.overview }}</p>
@@ -56,7 +56,7 @@
         </div>
         <div class="access_course justify-content-center">
           <div>
-            {% if request.user.is_authenticated %}
+          {% if request.user.is_authenticated %}
             {% if request.user|is_enrolled:object %}
 
             <a href="{% url 'student_course_detail' course.id %}"
@@ -76,11 +76,8 @@
             <a href="{% url 'login' %}" class="button btn btn-success">
               Login to enroll
             </a>
-
           {% endif %}
           </div>
-
-
         </div>
       </div>
       <div class="course__card__sidebar mx-2">
@@ -89,27 +86,32 @@
         {% else %}
         <img src="#" class="card-img-top m-1 card-photo card__img" alt="...">
         {% endif %}
-        <div class="card-body border-1 p-2 sidebar__card__body ">
+        <div class="card-body border-1 p-1 sidebar__card__body ">
           <h5 class="card-title card-font">{{ course.title|truncatewords:9}}</h5>
-          <h5 class="card-title my-2">This course contains:</h5>
-          <ul class="course-contents">
-            <li class="course__content__font">
-              <i class="fas fa-book"></i>
-              {{course.modules.count}} modules
-            </li>
-            <li class="course__content__font">
-              <i class="fas fa-tv"></i>
-              {% total_contents course %} contents
-            </li>
-          </ul>
+          <h5 class="card-title my-1">This course contains:</h5>
+          <div class="course-contents">
+            <ul class="course-contents">
+              <li class="course__content__font">
+                  <i class="fas fa-book"></i>
+                  {{course.modules.count}} modules
+              </li>
+              <li class="course__content__font">
+                  <i class="fas fa-tv"></i>
+                  {% total_contents course %} contents
+              </li>
+            </ul>
+          </div>
+            
+          
+          
 
-          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-          <div class="enroll-login-access-button">
+     
+          <div class="enroll-login-access-button my-1">
           {% if request.user.is_authenticated %}
             {% if request.user|is_enrolled:object %}
 
             <a href="{% url 'student_course_detail' course.id %}"
-              class="button btn btn-success">
+              class="button btn btn-success justify-content-center">
               Go to course!
             </a>
             {% else %}

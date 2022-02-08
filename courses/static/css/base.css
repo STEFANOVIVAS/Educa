@@ -453,8 +453,9 @@ h1 {
 }
 .course-contents {
     list-style-type:none;
-    margin:0;
+    margin:5px;
     padding:0;
+    display:inline-block;
 }
 
 
@@ -549,11 +550,17 @@ input[type="checkbox"]
 }
 
 .enroll-login-access-button {
-    width: 266px;
-    height:50px;
+    max-width: 262px;
+    max-height:50px;
+    
+    text-align: center;
+    
+    
 }
 
-
+.enroll-login-access-button input {
+    float:none;
+}
 
 
 /* .sidebar img {
@@ -565,7 +572,7 @@ input[type="checkbox"]
 .course__card__sidebar{
     position:sticky; 
     top:10%;  
-    max-width: 280px;
+    max-width: 250px;
     max-height:450px;
    
     border-color: #aaa;
@@ -578,7 +585,7 @@ input[type="checkbox"]
  
 
 .sidebar__card__body {
-    height: 180px;
+    height: 200px;
     border: 1px solid #ddd;
 
 }
@@ -600,7 +607,7 @@ input[type="checkbox"]
 }
 
 .module p {
-    margin-top:20px;
+    margin-top:10px;
     width:100%;
     float:left;
 }
@@ -755,9 +762,10 @@ input[type=submit], a.button {
     text-transform:uppercase;
     border:none;
     padding:10px 20px;
-    margin:10px 0;
-    width: 262px;
+    margin:5px;
+    max-width: 200px;
     text-decoration: none;
+    max-height: 40px;
     
 }
 
