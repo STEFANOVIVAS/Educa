@@ -1,5 +1,6 @@
 from django import template
 from ..models import Subject, Course
+from django.contrib.auth.models import User
 
 
 register = template.Library()
@@ -37,3 +38,12 @@ def total_contents(course_obj):
     for module in course.modules.all():
         total_contents=module.contents.count()
     return total_contents
+
+
+@register.simple_tag
+def all_users(email):
+    user=User.objects.extra(where=["email=email"])
+    if user:
+        return True
+    else:
+        return False

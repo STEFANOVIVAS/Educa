@@ -153,6 +153,7 @@ CACHES = {
     }
 }
 
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 # AUTH_USER_MODEL: "accounts.User"
 
 django_on_heroku.settings(locals())
