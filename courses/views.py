@@ -16,6 +16,22 @@ from django.core.cache import cache
 
 
 
+class SearchCourseView(ListView):
+    model=Course
+    template_name='courses/course/search.html'
+    context_object_name='courses'
+    
+
+    def get_queryset(self):
+        query=self.request.GET.get('course')
+        results=Course.objects.filter(title__contains=query)
+        print(results)
+        return results
+
+
+
+
+
 class OwnerMixin(object):
     def get_queryset(self):
         qs = super().get_queryset()

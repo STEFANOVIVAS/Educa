@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if courses %}
+        {% for course in courses %}
+        <div class="card col-md-4 m-4 card-grid p-0 rounded-0 border-0">
+            {% if course.cover_photo %}
+            <img src="{{course.cover_photo.url}}" class="card-img-top card__image" alt="...">
+            {% else %}
+            <img src="#" class="card-img-top card__image" alt="...">
+            {% endif %}
+            <div class="card-body border-1 p-2">
+            <a href="{% url 'course_detail' course.pk %}"><h5 class="card-title card-font">{{ course.title|truncatewords:9}}</h5></a>
+            <p class="card-text card-creator">Created by {{course.owner}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="module">
+            <p>No results were found for your search.</p>
+        </div>
+       
+    {% endif %}
+
+{% endblock %}

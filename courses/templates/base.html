@@ -74,10 +74,13 @@
               <hr class="dropdown-divider"/>
               <div class="form-group my-1 mx-2">
                 <div class="form-outline">
-                  <input type="search" id="search__form" class="form-control-dropdown" placeholder="Search">
-                  <button type="button" class="btn btn-dark btn__search">
-                    <i class="fas fa-search"></i>
-                  </button>
+                  <form action="{% url 'search_course' %}" method="get">
+                    <input type="search" name="course" id="search__form" class="form-control-dropdown" placeholder="Search" method="get">
+                      <button type="search" class="btn btn-dark btn__search">
+                        <i class="fas fa-search"></i>
+                      </button>
+                  </form>
+                  
                 </div>
                 
               </div>
