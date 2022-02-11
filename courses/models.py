@@ -22,7 +22,7 @@ class Subject(models.Model):
 
 class Course(models.Model):
     owner = models.ForeignKey(
-        Profile, related_name='courses_created', on_delete=models.CASCADE)
+        User, related_name='courses_created', on_delete=models.CASCADE)
     subject = models.ForeignKey(
         Subject, related_name='courses', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -74,7 +74,7 @@ class Content(models.Model):
 
 class ItemBase(models.Model):
     owner = models.ForeignKey(
-        Profile, related_name='%(class)s_related', on_delete=models.CASCADE)
+        User, related_name='%(class)s_related', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

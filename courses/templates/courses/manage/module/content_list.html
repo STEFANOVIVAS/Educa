@@ -37,7 +37,7 @@
 
         <div id="module-contents">
           {% for content in module.contents.all %}
-            <div data-id="{{ content.id }}">
+            <div class="container" data-id="{{ content.id }}">
               {% with item=content.item %}
                 <p>{{module.order|add:1}}.{{content.order|add:1}} {{ item }} ({{ item|model_name }})</p>
                 <a href="{% url 'module_content_update' module.id item|model_name item.id %}">
