@@ -66,5 +66,5 @@ def student_module_detail(request,course_id,module_id, content_id):
     course=Course.objects.get(id=course_id)
     module=course.modules.get(id=module_id)
     content=module.contents.get(id=content_id)
-    return render(request,'students/course/detail.html', {'content': content,'course':course})
+    return render(request,'students/course/detail.html', {'content': content,'course':course, 'module':module})
     #refatorar função

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-  <h1>{{module.order|add:1}}.{{ module.title }}</h1>
+  <h1>{{module.order|add:1}}.{{content.order|add:1}} {{content.item.title}}</h1>
   <div class="container-lg justify-content-center video__content">
     <div class="container-lg main-student-detail p-0 m-0">
       <div class="student-module">
@@ -14,7 +14,7 @@
         {{content.item.render}}
              
       </div>
-      <hr>
+      <hr class="border__screen">
       <div class="container-lg course-content justify-content-center p-0">
         <h2>Course content</h2>
         <div class="accordion my-4 id="accordionPanelsStayOpenExample">
