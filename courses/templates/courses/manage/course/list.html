@@ -4,9 +4,9 @@
 
 {% block content %}
     <h1>My courses</h1>
-    <div class="container module">
+    <div class="container col-md-6 module">
         {% for course in object_list %}
-            <div class="course-info col-md-4">
+            <div class="course-info">
                 <h3>{{course.title}}</h3>
                 <div class="manage__courses">
                     <div class="manage__courses__button"><a class="text-white bg-secondary" href="{% url 'update_course' course.id %}">Edit Course</a></div>
