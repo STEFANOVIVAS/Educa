@@ -3,21 +3,14 @@ Educa is a Educational platform where you can join the best content in the inter
 <p align="center">
   <img src="./educa_gif.gif">
 <p/>
-<br/>
-<p>
-  <img src="./educa_gif2.gif">
-<p/>
 
 # Index
    * [About](#Educa)
    * [Index](#Index)
    * [Status](#Status)
-   * [Como usar](#como-usar)
-      * [Pre Requisitos](#pre-requisitos)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
+   * [Features](# Features)
+   * [Deploy](# Deploy on heroku)
+   * [How to run](#How to run the aplication)
    * [Tests](#testes)
    * [Tecnologias](#tecnologias)
 
@@ -32,3 +25,23 @@ Educa is a Educational platform where you can join the best content in the inter
 - [x] Search for courses by subject
 - [x] Enroll courses and access contents as students
 - [x] Responsiveness
+
+<p>
+  <img src="./educa_gif2.gif">
+<p/>
+
+# Deploy on heroku
+https://edu-ca.herokuapp.com/
+
+# How to run the aplication
+
+* Clone the repository. git clone https://github.com/STEFANOVIVAS/Educa
+* Create your own virtual environment. ...
+* Install your requirements. ...
+* Create a new PostgreSQL database. ...
+* Generate a new secret key. ...
+* Rename the project. ...
+* Make your migrations. ...
+* Create a new superuser.
+
+
