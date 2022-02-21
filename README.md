@@ -8,6 +8,19 @@ Educa is a Educational platform where you can join the best content in the inter
   <img src="./educa_gif2.gif">
 <p/>
 
+# Index
+   * [About](#Educa)
+   * [Index](#Index)
+   * [Status](#Status)
+   * [Como usar](#como-usar)
+      * [Pre Requisitos](#pre-requisitos)
+      * [Local files](#local-files)
+      * [Remote files](#remote-files)
+      * [Multiple files](#multiple-files)
+      * [Combo](#combo)
+   * [Tests](#testes)
+   * [Tecnologias](#tecnologias)
+
 # Status
 :construction: Under construction :construction:
 
