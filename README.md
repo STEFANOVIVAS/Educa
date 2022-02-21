@@ -11,8 +11,7 @@ Educa is a Educational platform where you can join the best content in the inter
    * [Features](#Features)
    * [Deploy](#Deploy-on-heroku)
    * [How to run](#How-to-run-the-aplication)
-   * [Tests](#testes)
-   * [Tecnologias](#tecnologias)
+   * [Technologies](#Technologies)
 
 # Status
 :construction: Under construction :construction:
