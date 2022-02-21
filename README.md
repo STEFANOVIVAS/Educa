@@ -12,6 +12,8 @@ Educa is a Educational platform where you can join the best content in the inter
    * [Deploy](#Deploy-on-heroku)
    * [How to run](#How-to-run-the-aplication)
    * [Technologies](#Technologies)
+   * [Author](#Author)
+   * [License](#License)
 
 # Status
 :construction: Under construction :construction:
@@ -49,4 +51,10 @@ https://edu-ca.herokuapp.com/
 - [Django](https://www.djangoproject.com/)
 - [Bootstrap](https://getbootstrap.com/)
 
+# Auhtor
+
+
+[<img src="https://avatars.githubusercontent.com/u/71469098?v=4"><br><sub>Stefano Vivas</sub>](https://github.com/STEFANOVIVAS)
+
+# License
 
