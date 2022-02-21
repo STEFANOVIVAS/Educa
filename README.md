@@ -57,4 +57,4 @@ https://edu-ca.herokuapp.com/
 [<img src="https://avatars.githubusercontent.com/u/71469098?v=4"><br><sub>Stefano Vivas</sub>](https://github.com/STEFANOVIVAS)
 
 # License
-
+Educa is MIT Licensed
