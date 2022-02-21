@@ -44,4 +44,10 @@ https://edu-ca.herokuapp.com/
 * Make your migrations.
 * Create a new superuser.
 
+# Technologies
+
+- [Python](https://www.python.org/)
+- [Django](https://www.djangoproject.com/)
+- [Bootstrap](https://getbootstrap.com/)
+
 
