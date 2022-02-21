@@ -25,4 +25,10 @@ Educa is a Educational platform where you can join the best content in the inter
 :construction: Under construction :construction:
 
 # Features
--[x] User registration/authentication
+- [x] User registration/authentication as instructor or student.
+- [x] Create modules/contents as instructor with video, text, image or file.
+- [x] Delete modules/contents as instructor.
+- [x] Update/manage courses as instructor.
+- [x] Search for courses by subject
+- [x] Enroll courses and access contents as students
+- [x] Responsiveness
