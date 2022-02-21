@@ -25,3 +25,4 @@ Educa is a Educational platform where you can join the best content in the inter
 :construction: Under construction :construction:
 
 # Features
+-[x] User registration/authentication
