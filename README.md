@@ -51,7 +51,7 @@ https://edu-ca.herokuapp.com/
 - [Django](https://www.djangoproject.com/)
 - [Bootstrap](https://getbootstrap.com/)
 
-# Auhtor
+# Author
 
 
 [<img src="https://avatars.githubusercontent.com/u/71469098?v=4"><br><sub>Stefano Vivas</sub>](https://github.com/STEFANOVIVAS)
