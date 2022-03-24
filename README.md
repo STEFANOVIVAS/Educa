@@ -29,6 +29,8 @@ Educa is a Educational platform where you can join the best content in the inter
 
 <p>
   <img src="./educa_gif2.gif">
+  <hr>
+  <img src="./educa-image1.png">
 <p/>
 
 # Deploy on heroku
